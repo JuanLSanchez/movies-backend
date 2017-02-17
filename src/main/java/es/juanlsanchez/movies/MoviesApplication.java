@@ -1,4 +1,4 @@
-package es.juanlsanchez;
+package es.juanlsanchez.movies;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
