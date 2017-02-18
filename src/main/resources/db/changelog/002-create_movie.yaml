@@ -1,0 +1,32 @@
+databaseChangeLog:
+- changeSet:
+    id: 2
+    author: JuanLSanchez
+    changes:
+    - createTable:
+        tableName: movie
+        columns:
+        - column:
+            name: id
+            type: bigint
+        - column:
+            name: code
+            type: varchar(100)
+        - column:
+            name: tit
+            type: varchar(100)
+        - column:
+            name: href
+            type: varchar(255)
+        - column:
+            name: title
+            type: varchar(100)
+        - column:
+            name: description
+            type: text
+        - column:
+            name: src_img_poster
+            type: varchar(255)
+        - column:
+            name: src_img_large
+            type: varchar(255)

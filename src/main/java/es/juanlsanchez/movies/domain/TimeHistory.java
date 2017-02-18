@@ -1,12 +1,10 @@
 package es.juanlsanchez.movies.domain;
 
 import java.time.Instant;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,25 +17,19 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "time")
-public class Time extends BaseEntity {
+@Table(name = "time_history")
+public class TimeHistory extends BaseEntity {
 
-  @Column(name = "href", length = 255)
-  private String href;
-
-  // Data
   @Column(name = "instant")
   private Instant instant;
-  @Column(name = "price")
-  private Double price;
+  @Column(name = "number_of_free_seat")
+  private Integer numberOfFreeSeat;
+  @Column(name = "number_of_total_seat")
+  private Integer numberOfTotalSeat;
+  @Column(name = "seats", columnDefinition = "text", length = 65535)
+  private String seats;
 
   // Relationships
   @ManyToOne(optional = false)
-  private Cinema cinema;
-  @ManyToOne(optional = false)
-  private Movie movie;
-  @OneToMany(mappedBy = "time")
-  private List<TimeHistory> timeHistories;
-
-
+  private Time time;
 }

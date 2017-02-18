@@ -1,0 +1,41 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    author: JuanLSanchez
+    changes:
+    - createTable:
+        tableName: cinema
+        columns:
+        - column:
+            name: id
+            type: bigint
+        - column:
+            name: code
+            type: varchar(100)
+        - column:
+            name: tit
+            type: varchar(100)
+        - column:
+            name: href
+            type: varchar(255)
+        - column:
+            name: name
+            type: varchar(100)
+        - column:
+            name: address
+            type: varchar(255)
+        - column:
+            name: city
+            type: varchar(100)
+        - column:
+            name: province
+            type: varchar(100)
+        - column:
+            name: phone
+            type: varchar(20)
+        - column:
+            name: email
+            type: varchar(100)
+        - column:
+            name: number_of_theaters
+            type: integer

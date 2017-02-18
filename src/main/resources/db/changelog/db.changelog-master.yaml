@@ -1,0 +1,9 @@
+databaseChangeLog:
+- include:
+    file: classpath:db/changelog/001-create_cinema.yaml
+- include:
+    file: classpath:db/changelog/002-create_movie.yaml
+- include:
+    file: classpath:db/changelog/003-create_time.yaml
+- include:
+    file: classpath:db/changelog/004-create_time_history.yaml

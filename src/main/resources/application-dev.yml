@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: dev
+    include: mysql
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+      show-sql: true
+app:
+  properties:
+    cors:
+      allowed-origins: '*'
+      allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+      allowed-headers: '*'
+      exposed-headers: Link,FileName
+      allow-credentials: true
+      max-age: 1800
+logging:
+  level:
+    root: WARN
+    org.springframework.web: INFO
+    org.hibernate: INFO
+    es.juanlsanchez.movies: DEBUG

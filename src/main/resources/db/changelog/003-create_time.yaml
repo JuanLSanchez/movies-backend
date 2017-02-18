@@ -1,0 +1,26 @@
+databaseChangeLog:
+- changeSet:
+    id: 3
+    author: JuanLSanchez
+    changes:
+    - createTable:
+        tableName: time
+        columns:
+        - column:
+            name: id
+            type: bigint
+        - column:
+            name: href
+            type: varchar(255)
+        - column:
+            name: instant
+            type: timestamp
+        - column:
+            name: price
+            type: double
+        - column:
+            name: movie_id
+            type: bigint
+        - column:
+            name: cinema_id
+            type: bigint

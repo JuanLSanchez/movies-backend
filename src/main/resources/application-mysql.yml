@@ -1,0 +1,12 @@
+c3p0:
+  datasource: 
+    jdbc-url: jdbc:mysql://localhost:3306/movies?useSSL=false
+    user: movies
+    password: movies 
+    driver-class: com.mysql.jdbc.Driver
+spring:
+  profiles:
+    active: mysql
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL5Dialect

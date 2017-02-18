@@ -1,0 +1,26 @@
+databaseChangeLog:
+- changeSet:
+    id: 4
+    author: JuanLSanchez
+    changes:
+    - createTable:
+        tableName: time_history
+        columns:
+        - column:
+            name: id
+            type: bigint
+        - column:
+            name: instant
+            type: timestamp
+        - column:
+            name: number_of_free_seat
+            type: integer
+        - column:
+            name: number_of_total_seat
+            type: integer
+        - column:
+            name: seats
+            type: text
+        - column:
+            name: time_id
+            type: bigint
