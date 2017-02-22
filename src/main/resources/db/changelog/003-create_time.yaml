@@ -9,6 +9,11 @@ databaseChangeLog:
         - column:
             name: id
             type: bigint
+            autoIncrement: ${autoIncrement}
+            constraints:
+              primaryKeyName: pk_cinema
+              primaryKey: true
+              nullable: false
         - column:
             name: href
             type: varchar(255)
@@ -21,6 +26,26 @@ databaseChangeLog:
         - column:
             name: movie_id
             type: bigint
+            constraints:
+              nullable: false
         - column:
             name: cinema_id
             type: bigint
+            constraints:
+              nullable: false
+    - addForeignKeyConstraint:
+        baseColumnNames: movie_id
+        baseTableName: time
+        constraintName: fk_time_movie
+        onDelete: CASCADE
+        onUpdate: RESTRICT
+        referencedColumnNames: id
+        referencedTableName: movie
+    - addForeignKeyConstraint:
+        baseColumnNames: cinema_id
+        baseTableName: time
+        constraintName: fk_time_cinema
+        onDelete: CASCADE
+        onUpdate: RESTRICT
+        referencedColumnNames: id
+        referencedTableName: cinema

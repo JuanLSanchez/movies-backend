@@ -1,4 +1,12 @@
 databaseChangeLog:
+- property:
+    name: autoIncrement
+    value: true
+    dbms: mysql,h2,postgresql
+- property:
+    name: autoIncrement
+    value: false
+    dbms: oracle
 - include:
     file: classpath:db/changelog/001-create_cinema.yaml
 - include:

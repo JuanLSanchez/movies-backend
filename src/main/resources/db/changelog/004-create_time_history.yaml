@@ -9,6 +9,11 @@ databaseChangeLog:
         - column:
             name: id
             type: bigint
+            autoIncrement: ${autoIncrement}
+            constraints:
+              primaryKeyName: pk_cinema
+              primaryKey: true
+              nullable: false
         - column:
             name: instant
             type: timestamp
@@ -24,3 +29,11 @@ databaseChangeLog:
         - column:
             name: time_id
             type: bigint
+    - addForeignKeyConstraint:
+        baseColumnNames: time_id
+        baseTableName: time_history
+        constraintName: fk_time_history_time
+        onDelete: CASCADE
+        onUpdate: RESTRICT
+        referencedColumnNames: id
+        referencedTableName: time

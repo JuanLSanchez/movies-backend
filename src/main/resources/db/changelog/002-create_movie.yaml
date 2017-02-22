@@ -9,6 +9,11 @@ databaseChangeLog:
         - column:
             name: id
             type: bigint
+            autoIncrement: ${autoIncrement}
+            constraints:
+              primaryKeyName: pk_cinema
+              primaryKey: true
+              nullable: false
         - column:
             name: code
             type: varchar(100)

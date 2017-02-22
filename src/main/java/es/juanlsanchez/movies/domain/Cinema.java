@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,6 +42,7 @@ public class Cinema extends BaseEntity {
   @Column(name = "email", length = 100)
   private String email;
   @Column(name = "number_of_theaters")
+  @Min(0)
   private Integer numberOfTheaters;
 
   // Relationships

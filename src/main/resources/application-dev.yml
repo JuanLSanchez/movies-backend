@@ -16,6 +16,11 @@ app:
       exposed-headers: Link,FileName
       allow-credentials: true
       max-age: 1800
+c3p0:
+  datasource:
+    jdbc-url: jdbc:mysql://localhost:3306/movies?useSSL=false
+    user: movies
+    password: movies
 logging:
   level:
     root: WARN
