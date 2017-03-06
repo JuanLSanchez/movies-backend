@@ -12,7 +12,10 @@ spring:
   jackson.serialization:
     write-dates-as-timestamps: false
 management.context-path: /manage
-app.compraentradas:
-  url-to-list-movies: http://www.compraentradas.com/
-  css-query-to-list-movies: '#SelectPeliculas>option'
-  
+app:
+  compraentradas:
+    url-to-list-movies: http://www.compraentradas.com/
+    css-query-to-list-movies: '#SelectPeliculas>option'
+    # {0} = code
+    # {1} = tit
+    url-to-get-movie: http://www.compraentradas.com/CinesPelicula/{0}/{1}

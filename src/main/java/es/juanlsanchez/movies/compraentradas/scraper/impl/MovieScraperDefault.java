@@ -45,7 +45,7 @@ public class MovieScraperDefault implements MovieScraper {
   @Override
   public Optional<MovieDetailsDTO> findOne(String code) throws IOException {
     MovieDetailsDTO result = null;
-    String url = MessageFormat.format("http://www.compraentradas.com/CinesPelicula/{0}/a", code);
+    String url = MessageFormat.format(compraentradaProperty.getUrlToGetMovie(), code, "a");
     Document doc = Jsoup.connect(url).headers(JsoupConstants.HEADERS).get();
     Elements elementDescription = doc.select("li[data-title]");
     String description = elementDescription.attr("data-description");
@@ -55,7 +55,7 @@ public class MovieScraperDefault implements MovieScraper {
       String srcImgPoster = doc.select("#slide-1-layer-2>img").attr("src");
       String hrefCinema = doc.select(".LinkCine").get(0).attr("href");
       String tit = hrefCinema.split(code)[1].substring(1);
-      String href = "http://www.compraentradas.com/CinesPelicula/" + code + "/" + tit;
+      String href = MessageFormat.format(compraentradaProperty.getUrlToGetMovie(), code, tit);
       String title = elementDescription.attr("data-title");
       result = new MovieDetailsDTO(code, tit, href, title, description, srcImgPoster, srcImgLarge);
     }

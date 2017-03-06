@@ -17,8 +17,10 @@ import lombok.Setter;
 public class CompraentradaProperty {
 
   @NotNull
-  public String urlToListMovies;
+  private String urlToListMovies;
   @NotNull
-  public String cssQueryToListMovies;
+  private String urlToGetMovie;
+  @NotNull
+  private String cssQueryToListMovies;
 
 }
