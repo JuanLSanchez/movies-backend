@@ -9,25 +9,29 @@ import java.util.stream.Collectors;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import es.juanlsanchez.movies.compraentradas.dto.MovieDetailsDTO;
 import es.juanlsanchez.movies.compraentradas.dto.MovieListDTO;
+import es.juanlsanchez.movies.compraentradas.mapper.MovieDetailsDTOMapper;
 import es.juanlsanchez.movies.compraentradas.mapper.MovieListDTOMapper;
 import es.juanlsanchez.movies.compraentradas.scraper.MovieScraper;
 import es.juanlsanchez.movies.config.constants.JsoupConstants;
 import es.juanlsanchez.movies.config.property.CompraentradaProperty;
 
-@Service
+@Component
 public class MovieScraperDefault implements MovieScraper {
 
   private final CompraentradaProperty compraentradaProperty;
   private final MovieListDTOMapper movieListDTOMapper;
+  private final MovieDetailsDTOMapper movieDetailsDTOMapper;
 
   public MovieScraperDefault(final CompraentradaProperty compraentradaProperty,
-      final MovieListDTOMapper movieListDTOMapper) {
+      final MovieListDTOMapper movieListDTOMapper,
+      final MovieDetailsDTOMapper movieDetailsDTOMapper) {
     this.compraentradaProperty = compraentradaProperty;
     this.movieListDTOMapper = movieListDTOMapper;
+    this.movieDetailsDTOMapper = movieDetailsDTOMapper;
   }
 
   @Override
@@ -44,21 +48,12 @@ public class MovieScraperDefault implements MovieScraper {
 
   @Override
   public Optional<MovieDetailsDTO> findOne(String code) throws IOException {
-    MovieDetailsDTO result = null;
-    String url = MessageFormat.format(compraentradaProperty.getUrlToGetMovie(), code, "a");
+    String urlToGetMovie = compraentradaProperty.getUrlToGetMovie();
+    String url = MessageFormat.format(urlToGetMovie, code, "a");
     Document doc = Jsoup.connect(url).headers(JsoupConstants.HEADERS).get();
-    Elements elementDescription = doc.select("li[data-title]");
-    String description = elementDescription.attr("data-description");
 
-    if (!description.isEmpty()) {
-      String srcImgLarge = doc.select(".rev-slidebg").attr("src");
-      String srcImgPoster = doc.select("#slide-1-layer-2>img").attr("src");
-      String hrefCinema = doc.select(".LinkCine").get(0).attr("href");
-      String tit = hrefCinema.split(code)[1].substring(1);
-      String href = MessageFormat.format(compraentradaProperty.getUrlToGetMovie(), code, tit);
-      String title = elementDescription.attr("data-title");
-      result = new MovieDetailsDTO(code, tit, href, title, description, srcImgPoster, srcImgLarge);
-    }
+    MovieDetailsDTO result =
+        this.movieDetailsDTOMapper.fromDoc(code, doc, urlToGetMovie);
 
     return Optional.ofNullable(result);
   }
