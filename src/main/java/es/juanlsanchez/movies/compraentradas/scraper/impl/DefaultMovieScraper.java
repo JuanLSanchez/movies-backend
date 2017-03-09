@@ -20,13 +20,13 @@ import es.juanlsanchez.movies.config.constants.JsoupConstants;
 import es.juanlsanchez.movies.config.property.CompraentradaProperty;
 
 @Component
-public class MovieScraperDefault implements MovieScraper {
+public class DefaultMovieScraper implements MovieScraper {
 
   private final CompraentradaProperty compraentradaProperty;
   private final MovieListDTOMapper movieListDTOMapper;
   private final MovieDetailsDTOMapper movieDetailsDTOMapper;
 
-  public MovieScraperDefault(final CompraentradaProperty compraentradaProperty,
+  public DefaultMovieScraper(final CompraentradaProperty compraentradaProperty,
       final MovieListDTOMapper movieListDTOMapper,
       final MovieDetailsDTOMapper movieDetailsDTOMapper) {
     this.compraentradaProperty = compraentradaProperty;
@@ -52,8 +52,7 @@ public class MovieScraperDefault implements MovieScraper {
     String url = MessageFormat.format(urlToGetMovie, code, "a");
     Document doc = Jsoup.connect(url).headers(JsoupConstants.HEADERS).get();
 
-    MovieDetailsDTO result =
-        this.movieDetailsDTOMapper.fromDoc(code, doc, urlToGetMovie);
+    MovieDetailsDTO result = this.movieDetailsDTOMapper.fromDoc(code, doc, urlToGetMovie);
 
     return Optional.ofNullable(result);
   }
