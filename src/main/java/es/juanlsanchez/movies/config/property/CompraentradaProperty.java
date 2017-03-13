@@ -3,17 +3,17 @@ package es.juanlsanchez.movies.config.property;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Configuration
+@Validated
+@Component
 @ConfigurationProperties(prefix = "app.compraentradas")
 @Getter
 @Setter
-@Validated
 public class CompraentradaProperty {
 
   @NotNull
@@ -22,6 +22,8 @@ public class CompraentradaProperty {
   private String urlToGetMovie;
   @NotNull
   private String urlToGetCinema;
+  @NotNull
+  private String urlBase;
   @NotNull
   private String cssQueryToListMovies;
 
