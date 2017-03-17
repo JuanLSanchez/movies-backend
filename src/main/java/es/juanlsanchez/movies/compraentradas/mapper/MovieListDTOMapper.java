@@ -8,4 +8,6 @@ public interface MovieListDTOMapper {
 
   public MovieListDTO fromJsoupElement(Element option);
 
+  public MovieListDTO fromJsoupCinemaElement(Element element);
+
 }

@@ -16,4 +16,6 @@ public interface MovieScraper {
 
   public Optional<MovieDetailsDTO> findOne(String code) throws IOException;
 
+  public List<MovieListDTO> findAllActualFromCinema(String cinmaCode) throws IOException;
+
 }

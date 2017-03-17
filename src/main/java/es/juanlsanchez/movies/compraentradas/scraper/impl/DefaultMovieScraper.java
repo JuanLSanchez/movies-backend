@@ -49,6 +49,19 @@ public class DefaultMovieScraper implements MovieScraper {
   }
 
   @Override
+  public List<MovieListDTO> findAllActualFromCinema(String cinmaCode) throws IOException {
+    String urlToGetCinema = compraentradaProperty.getUrlToGetCinema();
+    String url = MessageFormat.format(urlToGetCinema, cinmaCode, "a");
+
+    Document doc = jsoupCompraentradasService.get(url);
+    Elements movies = doc.select("li.peliseleccionable");
+
+    return movies.subList(1, movies.size()).stream()
+        .map(element -> movieListDTOMapper.fromJsoupCinemaElement(element))
+        .collect(Collectors.toList());
+  }
+
+  @Override
   public Optional<MovieDetailsDTO> findOne(String code) throws IOException {
     String urlToGetMovie = compraentradaProperty.getUrlToGetMovie();
     String url = MessageFormat.format(urlToGetMovie, code, "a");

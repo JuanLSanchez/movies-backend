@@ -21,3 +21,7 @@ app:
     url-to-get-movie: http://www.compraentradas.com/CinesPelicula/{0}/{1}
     url-to-get-cinema: http://www.compraentradas.com/Cine/{0}/{1}
     url-base: http://www.compraentradas.com/
+    # {0} = day
+    # {1} = cinema code
+    # {2} = movie code
+    url-to-get-times: http://www.compraentradas.com/HorariosDia/{0}/{1}/{2}

@@ -25,6 +25,8 @@ public class CompraentradaProperty {
   @NotNull
   private String urlBase;
   @NotNull
+  private String urlToGetTimes;
+  @NotNull
   private String cssQueryToListMovies;
 
 }
