@@ -9,6 +9,11 @@ spring:
       show-sql: true
 app:
   properties:
+    task:
+#      cinema: '0/10 * * * * ?'
+#      movie: '0/10 * * * * ?'
+#      time: '0/10 * * * * ?'
+#      time-history: '0/10 * * * * ?'
     cors:
       allowed-origins: '*'
       allowed-methods: GET, PUT, POST, DELETE, OPTIONS
