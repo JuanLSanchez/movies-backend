@@ -39,4 +39,9 @@ public class DefaultMovieService implements MovieService {
     return this.movieRepository.findByTitle(title);
   }
 
+  @Override
+  public Optional<Movie> findOneByMaxCode() {
+    return movieRepository.findTopByOrderByCodeDesc();
+  }
+
 }

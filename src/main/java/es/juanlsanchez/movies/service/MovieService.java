@@ -12,4 +12,6 @@ public interface MovieService {
 
   public Optional<Movie> findOneByTitle(String title);
 
+  public Optional<Movie> findOneByMaxCode();
+
 }

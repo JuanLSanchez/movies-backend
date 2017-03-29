@@ -10,4 +10,6 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
   public Optional<Movie> findByTitle(String title);
 
+  public Optional<Movie> findTopByOrderByCodeDesc();
+
 }
