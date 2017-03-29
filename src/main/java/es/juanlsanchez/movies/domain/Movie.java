@@ -40,4 +40,14 @@ public class Movie extends BaseEntity {
   // Relationships
   @OneToMany(mappedBy = "movie")
   private List<Time> times;
+
+  @Override
+  public String toString() {
+    return "Movie [code=" + code + ", tit=" + tit + ", href=" + href + ", title=" + title
+        + ", description=" + description + ", srcImgPoster=" + srcImgPoster + ", srcImgLarge="
+        + srcImgLarge + "]";
+  }
+
+
+
 }
