@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
@@ -18,6 +19,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "movie")
+@ToString(exclude = "times")
 public class Movie extends BaseEntity {
 
   @Column(name = "code", length = 100)
@@ -40,14 +42,5 @@ public class Movie extends BaseEntity {
   // Relationships
   @OneToMany(mappedBy = "movie")
   private List<Time> times;
-
-  @Override
-  public String toString() {
-    return "Movie [code=" + code + ", tit=" + tit + ", href=" + href + ", title=" + title
-        + ", description=" + description + ", srcImgPoster=" + srcImgPoster + ", srcImgLarge="
-        + srcImgLarge + "]";
-  }
-
-
 
 }

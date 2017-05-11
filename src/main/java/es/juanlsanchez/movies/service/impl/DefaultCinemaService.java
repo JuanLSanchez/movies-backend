@@ -1,5 +1,6 @@
 package es.juanlsanchez.movies.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -25,6 +26,11 @@ public class DefaultCinemaService implements CinemaService {
   @Override
   public Cinema create(Cinema cinema) {
     return this.cinemaRepository.save(cinema);
+  }
+
+  @Override
+  public List<Cinema> findAll() {
+    return this.cinemaRepository.findAll();
   }
 
 }

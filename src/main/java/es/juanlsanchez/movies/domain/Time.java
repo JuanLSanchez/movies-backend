@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
@@ -20,6 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "time")
+@ToString(exclude = {"cinema", "movie", "timeHistories"})
 public class Time extends BaseEntity {
 
   @Column(name = "href", length = 255)

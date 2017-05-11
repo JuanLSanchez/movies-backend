@@ -2,6 +2,8 @@ package es.juanlsanchez.movies.service.impl;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import es.juanlsanchez.movies.domain.Movie;
@@ -23,6 +25,7 @@ public class DefaultMovieService implements MovieService {
   }
 
   @Override
+  @Transactional
   public Movie saveIfNotExistTitle(Movie movie) {
     Optional<Movie> optionalMovie = findOneByTitle(movie.getTitle());
     Movie result;

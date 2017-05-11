@@ -1,0 +1,77 @@
+databaseChangeLog:
+- changeSet:
+    id: 5
+    author: JuanLSanchez
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: code
+            type: varchar(100)
+        indexName: idx_cinema_code
+        tableName: cinema
+        unique: false
+    - createIndex:
+        columns:
+        - column:
+            name: name
+            type: varchar(100)
+        indexName: idx_cinema_name
+        tableName: cinema
+        unique: false
+    - createIndex:
+        columns:
+        - column:
+            name: code
+            type: varchar(100)
+        indexName: idx_movie_code
+        tableName: movie
+        unique: false
+    - createIndex:
+        columns:
+        - column:
+            name: title
+            type: varchar(100)
+        indexName: idx_movie_title
+        tableName: movie
+        unique: false
+    - createIndex:
+        columns:
+        - column:
+            name: instant
+            type: timestamp
+        indexName: idx_time_instant
+        tableName: time
+        unique: false
+    - createIndex:
+        columns:
+        - column:
+            name: price
+            type: double
+        indexName: idx_time_price
+        tableName: time
+        unique: false
+    - createIndex:
+        columns:
+        - column:
+            name: instant
+            type: timestamp
+        indexName: idx_time_history_instant
+        tableName: time_history
+        unique: false
+    - createIndex:
+        columns:
+        - column:
+            name: number_of_free_seat
+            type: integer
+        indexName: idx_time_history_f_s
+        tableName: time_history
+        unique: false
+    - createIndex:
+        columns:
+        - column:
+            name: number_of_total_seat
+            type: integer
+        indexName: idx_time_history_t_s
+        tableName: time_history
+        unique: false

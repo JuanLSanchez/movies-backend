@@ -15,3 +15,5 @@ databaseChangeLog:
     file: classpath:db/changelog/003-create_time.yaml
 - include:
     file: classpath:db/changelog/004-create_time_history.yaml
+- include:
+    file: classpath:db/changelog/005-create_index.yaml

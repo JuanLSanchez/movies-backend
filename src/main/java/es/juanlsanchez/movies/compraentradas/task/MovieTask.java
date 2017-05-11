@@ -10,7 +10,6 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 
 import es.juanlsanchez.movies.compraentradas.dto.MovieDetailsDTO;
 import es.juanlsanchez.movies.compraentradas.mapper.MovieDetailsDTOMapper;
@@ -41,15 +40,9 @@ public class MovieTask implements Task {
     this.movieService = movieService;
   }
 
-  @Override
-  @Scheduled(cron = "${app.properties.task.movie}")
-  public void run() {
-    log.debug("Run movie task");
-  }
-
   @Profile("initializer")
   @EventListener(ContextRefreshedEvent.class)
-  public void initializeMovies() {
+  public void run() {
     log.info("Initializing movies...");
     int i = 0;
     Integer code = 0;
